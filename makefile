@@ -18,6 +18,6 @@ Atom.o:atom.h Atom.cpp
 	g++ -std=gnu++0x  -c Atom.cpp
 
 clean:
-	rm -f *.o madRace utAtom
+	rm -f *.o hw2
 stat:
 	wc *.h *.cpp

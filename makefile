@@ -1,11 +1,11 @@
 all: hw2
 
 hw2: MainTerm.o Number.o Variable.o  Atom.o
-		
+
 ifeq (${OS}, Windows_NT)
-		g++ -o hw2 mainTerm.o Atom.o Number.o Variable.o -lgtest
+		g++ -o hw2 MainTerm.o Atom.o Number.o Variable.o -lgtest
 else
-		g++ -o hw2 mainTerm.o Atom.o Number.o Variable.o -lgtest -lpthread
+		g++ -o hw2 MainTerm.o Atom.o Number.o Variable.o -lgtest -lpthread
 endif
 
 

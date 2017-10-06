@@ -1,9 +1,14 @@
 all: hw2
 
-
-
 hw2: MainTerm.o Number.o Variable.o  Atom.o
-	 g++ -o hw2 MainTerm.o Number.o Variable.o  Atom.o -lgtest -lpthread
+		
+ifeq (${OS}, Windows_NT)
+		g++ -o hw2 mainTerm.o Atom.o Number.o Variable.o -lgtest
+else
+		g++ -o hw2 mainTerm.o Atom.o Number.o Variable.o -lgtest -lpthread
+endif
+
+
 
 MainTerm.o: MainTerm.cpp hw2.h
 	 g++ -std=gnu++0x -c MainTerm.cpp
@@ -17,7 +22,10 @@ Variable.o:variable.h Variable.cpp
 Atom.o:atom.h Atom.cpp
 	g++ -std=gnu++0x  -c Atom.cpp
 
+
 clean:
+ifeq (${OS}, Windows_NT)
+	del *.o *.exe
+else
 	rm -f *.o hw2
-stat:
-	wc *.h *.cpp
+endif

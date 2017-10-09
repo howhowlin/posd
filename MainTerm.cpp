@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "hw2.h"
+#include "utTerm.h"
 
 int main( int argc , char **argv )
 {

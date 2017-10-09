@@ -10,7 +10,7 @@ endif
 
 
 
-MainTerm.o: MainTerm.cpp hw2.h
+MainTerm.o: MainTerm.cpp utTerm.h
 	 g++ -std=gnu++0x -c MainTerm.cpp
 
 Number.o:number.h Number.cpp

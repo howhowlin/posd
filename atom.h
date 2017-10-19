@@ -7,9 +7,9 @@ using std::string;
 class Atom : public Term{
 public:
   string _symbol;
-  bool match(Term &term);
   Atom (string s);       // 1. 建構
   string symbol() const; // 2. 回傳Ｓymbol
+  bool match(Term &term);
 private:
 bool _assignable = true;
 

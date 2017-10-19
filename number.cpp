@@ -32,14 +32,14 @@ string Number::value() const {
   return s_value;
 }
 
-// bool Number::match(Term &term){
-//   bool _ret1 = _assignable1;
-//   Variable * vps1 = dynamic_cast<Variable *>(&term);
-//   if(vps1){
-//     if(_ret1){
-//       vps1->setValue(_svalue);
-//       _assignable1 = false;
-//     }
-//   }
-//   return _ret1;
-// }
+bool Number::match(Term &term){
+  bool singal = _assignable;
+  Variable * p1 = dynamic_cast<Variable *>(&term);
+  if(p1){
+    if(singal){
+      p1->setValue(s_value);
+      _assignable = false;
+    }
+  }
+  return singal;
+}

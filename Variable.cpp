@@ -14,6 +14,9 @@ string Variable::symbol() const{
   return _symbol;
 }
 
+void Variable::setValue(string s1) {
+  _value = s1;
+}
 
 bool Variable::match(Term & term){
   Atom * ps = dynamic_cast<Atom *>(&term);

@@ -15,6 +15,7 @@ public:
   string  _symbol;
   string value() const;
   string symbol() const;
+  void setValue(string s1);
   bool match(Term & term) ;
 
 private:

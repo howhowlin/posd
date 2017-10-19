@@ -11,10 +11,10 @@ class Number : public Term{
     Number(double s);
     string symbol() const;
     string value() const;
-    // bool match(Term &term);
+   bool match(Term &term);
   private:
     string s_value;
     double _value;
-    bool _assignable1 = true;
+    bool _assignable = true;
 };
 #endif

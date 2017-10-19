@@ -32,14 +32,14 @@ Please use [the files that were used in course](https://github.com/yccheng66/pos
 
 #### Deadline
 
-  Thus Oct 19 2017 23:59:59 
+  Thus Oct 19 2017 23:59:59
 
 #### Note
 
   * **About project structure**. In pervious homework, some people will place test file into folder and write the corresponding makefile. (e.g. `variable.h` in *include* folder ) This will result the executable in .ut job that still contains your test script but not ours because we just replace the test file at root directory. Thus, the report of test result shows all tests are passed, but in the fact it may isn't. So, if you place your files into some folder, please check the test report in .ut job that test script is still yours or not.
 
   * Try to read building information in console log and fix the hw problem  by yourself as possible as you can.
-  
+
   * If your CI job can not pull your repository, email to us.
 
 #### Change log

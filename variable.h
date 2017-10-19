@@ -12,19 +12,18 @@ public:
   string _symbol;
   string symbol() const;
   string value() const;
-
-//  int signal2(int a);
-  // void setPoint(Variable * ps);
   void setValue(string s1);
   bool match(Term & term);
 
 private:
-  bool _signal = false;
-  bool _signal2 = false;
+  bool flag = false;
+  bool flag1 = false;
+  Variable *p1;
+  Variable *it;
   string _value;
-  Variable *v1;
-  Variable *_this;
   bool _assignable = true;
+  bool singal ;
+
 };
 
 #endif

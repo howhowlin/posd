@@ -8,7 +8,7 @@ using namespace std;
 #include <iostream>
 using std::string;
 
-class Atom;
+class Term;
 class Variable:public Term{
 public:
   Variable(string s);

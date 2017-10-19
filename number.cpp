@@ -1,6 +1,8 @@
 #include "number.h"
 #include "atom.h"
 #include "variable.h"
+#include <cstdio>
+stringstream ss;
 
 Number::Number(double s){
   char pick[20];

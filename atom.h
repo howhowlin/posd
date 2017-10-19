@@ -10,6 +10,8 @@ public:
 
   Atom (string s);       // 1. 建構
   string symbol() const; // 2. 回傳Ｓymbol
+private:
+bool _assignable = true;
 
 };
 

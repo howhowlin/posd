@@ -21,7 +21,7 @@ bool Variable::match( Term & term ){
   if(!_inst){
     _inst = &term ;
     if(_inst->get()=="Atom"){
-      std::cout << " "+_inst->symbol() << '\n';
+      //std::cout << " "+_inst->symbol() << '\n';
     }
     return true;
   }

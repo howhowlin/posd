@@ -18,7 +18,7 @@ Term * List::head() const{
 }
 List * List::tail() const{
 
-  
+
 }
 
 
@@ -60,8 +60,9 @@ bool List::match(Term &term){
          }
       }
    }
-   return true;
-
+   else{
+      return symbol() == term.symbol();
+  }
  }
 
 

@@ -172,9 +172,9 @@ TEST(List, matchToVarToAtominListShouldSucceed) {
 // X = alan_mathison_turing.
 TEST(List, matchVarinListToAtomShouldSucceed) {
   Variable X("X");
-  Atom  alan_mathison_turing(" alan_mathison_turing"); //space problem
+  Atom  alan_mathison_turing("alan_mathison_turing"); //space problem
   EXPECT_TRUE(X.match(alan_mathison_turing)); // X = alan_mathison_turing.
-  EXPECT_EQ(" alan_mathison_turing",X.value());
+  EXPECT_EQ("alan_mathison_turing",X.value());
 
   Variable Y("Y");
   Number   a(496);

@@ -44,11 +44,18 @@ string List::value() const{
 
 bool List::match(Term &term){
 
-  if(typeid(term)==typeid(Variable))
-      return true;
+  _inst =&term;
+//  std::cout << _inst->get() << '\n';
 
 
-  else if(typeid(term)==typeid(List)){
+ if (_inst->get()=="Variable"){
+     return true;
+  }
+ else if(_inst->get()=="Atom"){
+   return false;
+ }
+
+  else if(_inst->get()=="List"){
    List &list = static_cast<List&>(term);  //??
      for(int i=0;i<_elements.size();i++){
        if(_elements[i]->symbol()!=list.elements(i)->symbol()){
@@ -61,7 +68,6 @@ bool List::match(Term &term){
          }
       }
         return true;
-
    }
    else{
       return symbol() == term.symbol();

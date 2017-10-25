@@ -23,6 +23,7 @@ public:
 
 private:
   vector<Term *> _elements;
+  Term * _inst;
 };
 
 #endif

@@ -51,9 +51,9 @@ bool List::match(Term &term){
  if (_inst->get()=="Variable"){
      return true;
   }
- else if(_inst->get()=="Atom"){
+  else if(_inst->get()=="Atom"){
    return false;
- }
+  }
 
   else if(_inst->get()=="List"){
    List &list = static_cast<List&>(term);  //??
@@ -70,7 +70,7 @@ bool List::match(Term &term){
         return true;
    }
    else{
-        return false;
+        return true;
    }
  }
 

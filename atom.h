@@ -2,18 +2,14 @@
 #define ATOM_H
 #include "term.h"
 #include <string>
+#include <sstream>
 using std::string;
+
 
 class Atom : public Term{
 public:
-  string _symbol;
-  Atom (string s);       // 1. 建構
-  string symbol() const; // 2. 回傳Ｓymbol
-  bool match(Term &term);
-private:
-bool _assignable = true;
-
+  string  get() const;
+  Atom(string s):Term(s) {}
 };
-
 
 #endif

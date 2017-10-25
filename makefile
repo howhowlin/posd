@@ -1,14 +1,14 @@
-all: hw3
+all: hw4
 
-hw3:  mainAtom.o Number.o Atom.o Variable.o
+hw4:  mainAtom.o Number.o Atom.o Variable.o List.o
 
 ifeq (${OS}, Windows_NT)
-	g++ -o hw3  mainAtom.o Atom.o Number.o Variable.o -lgtest
+	g++ -o hw4  mainAtom.o Atom.o Number.o Variable.o List.o -lgtest
 else
-	g++ -o hw3  mainAtom.o Atom.o Number.o Variable.o -lgtest -lpthread
+	g++ -o hw4  mainAtom.o Atom.o Number.o Variable.o  List.o -lgtest -lpthread
 endif
 
-mainAtom.o: mainAtom.cpp utVariable.h utStruct.h
+mainAtom.o: mainAtom.cpp utList.h
 		g++ -std=gnu++0x -c mainAtom.cpp
 
 Number.o: number.h Number.cpp
@@ -20,11 +20,14 @@ Atom.o: atom.h Atom.cpp
 Variable.o: variable.h Variable.cpp
 	g++ -std=gnu++0x -c Variable.cpp
 
+List.o: list.h List.cpp
+	g++ -std=gnu++0x -c List.cpp
+
 clean:
 ifeq (${OS}, Windows_NT)
-	del *.o *.exe
+	del *.o *.exe hw4
 else
-	rm -f *.o hw3
+	rm -f *.o hw4
 endif
 
 

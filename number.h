@@ -7,14 +7,9 @@
 using namespace std;
 
 class Number : public Term{
-  public:
-    Number(double s);
-    string symbol() const;
-    string value() const;
-   bool match(Term &term);
-  private:
-    string s_value;
-    double _value;
-    bool _assignable = true;
+public:
+  string get() const;
+  Number(double db);
+  bool  match(Term &term);
 };
 #endif

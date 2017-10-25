@@ -1,26 +1,14 @@
 #include "atom.h"
 #include "variable.h"
+#include <typeinfo>
 
-Atom::Atom(string s ){
-  _symbol = s;
+bool Term::match(Term & a){
+  if (typeid(a) ==  typeid(Variable))
+    return a.match(*this);
+  else
+    return symbol() == a.symbol();
 }
-string Atom::symbol()const{
-  return _symbol;
-}
 
-bool Atom::match(Term & term){
-  Variable * p1 = dynamic_cast<Variable *>(&term);
-  bool singal =_assignable;
-  if(p1){
-    if(singal){
-       p1->setValue(_symbol);
-      _assignable=false;
-    }
-  }
-  Atom * p2 = dynamic_cast<Atom *>(&term);
-  if(p2){
-    return symbol() == p2->symbol();
-  }
- return singal;
-
+string Atom::get() const{
+  return "Atom";
 }

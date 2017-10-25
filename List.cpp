@@ -47,6 +47,7 @@ bool List::match(Term &term){
   if(typeid(term)==typeid(Variable))
       return true;
 
+
   else if(typeid(term)==typeid(List)){
    List &list = static_cast<List&>(term);  //??
      for(int i=0;i<_elements.size();i++){
@@ -59,6 +60,8 @@ bool List::match(Term &term){
               return false;
          }
       }
+        return true;
+
    }
    else{
       return symbol() == term.symbol();

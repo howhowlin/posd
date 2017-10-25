@@ -18,8 +18,8 @@ public:
   List ();
   List (vector<Term *> const & elements);
   Term * elements(int index);
-  // Term * head() const;
-  // List * tail() const;
+  Term * head() const;
+  List * tail() const;
 
 private:
   vector<Term *> _elements;

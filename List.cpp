@@ -12,6 +12,15 @@ string List::get() const{
 Term * List::elements(int index) { //??
   return _elements[index];
 }
+Term * List::head() const{
+
+
+}
+List * List::tail() const{
+
+  
+}
+
 
 string List::symbol() const{
   string ret="";

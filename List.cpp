@@ -52,7 +52,7 @@ bool List::match(Term &term){
      return true;
   }
   else if(_inst->get()=="Atom"){
-   return false;
+    return false;
   }
 
   else if(_inst->get()=="List"){
@@ -67,10 +67,10 @@ bool List::match(Term &term){
               return false;
          }
       }
-        return true;
+      return true;
    }
    else{
-        return true;
+      return false;
    }
  }
 

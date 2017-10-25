@@ -70,10 +70,9 @@ bool List::match(Term &term){
         return true;
    }
    else{
-      return symbol() == term.symbol();
-  }
+        return false;
+   }
  }
-
 
 List::List(): _elements(){
 

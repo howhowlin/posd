@@ -25,7 +25,7 @@ Term * List::head() const{
 
 List * List::tail() const{
   if(this->value()=="[]"){
-    throw string("Accessing head in an empty list");
+    throw string("Accessing tail in an empty list");
   }
 
   vector<Term *> args;

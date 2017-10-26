@@ -81,15 +81,13 @@ bool List::match(Term &term){
   }
 
   else if(_inst->get()=="List"){
+    std::cout << "test1" << '\n';
    List &list = static_cast<List&>(term);
      for(int i=0;i<_elements.size();i++){
        if(_elements[i]->symbol()!=list.elements(i)->symbol()){
          if(_elements[i]->get()=="Variable"){
            _elements[i]->match(*list.elements(i));
-              return true;
             }
-          else
-              return false;
          }
       }
       return true;

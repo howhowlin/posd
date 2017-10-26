@@ -93,7 +93,7 @@ bool List::match(Term &term){
       return true;
    }
    else{
-      return true;
+      return symbol()==term.symbol();
    }
  }
 

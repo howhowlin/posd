@@ -244,7 +244,7 @@ TEST (List, emptyExecptionOfHead) {
       List l(args);
       EXPECT_EQ("[]",l.head()->value());
    }
-  catch(const char* message)
+  catch(string message)
   {
     EXPECT_EQ(string("Accessing head in an empty list"),message);
   }
@@ -260,7 +260,7 @@ TEST (List, emptyExecptionOfTail) {
      List l(args);
      EXPECT_EQ("[]",l.tail()->value());
   }
- catch(const char* message)
+ catch(string message)
  {
    EXPECT_EQ(string("Accessing head in an empty list"),message);
  }

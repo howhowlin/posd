@@ -15,7 +15,7 @@ Term * List::elements(int index) { //??
 
 Term * List::head() const{
     if(this->value()=="[]"){
-      throw "Accessing head in an empty list";
+      throw string("Accessing head in an empty list");
     }
     return _elements[0];
   // catch(const char* message){
@@ -25,7 +25,7 @@ Term * List::head() const{
 
 List * List::tail() const{
   if(this->value()=="[]"){
-    throw "Accessing head in an empty list";
+    throw string("Accessing head in an empty list");
   }
 
   vector<Term *> args;

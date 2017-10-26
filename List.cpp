@@ -76,9 +76,7 @@ bool List::match(Term &term){
  if (_inst->get()=="Variable"){
      return true;
   }
-  else if(_inst->get()=="Atom"){
-    return false;
-  }
+
 
   else if(_inst->get()=="List"){
     std::cout << "test1" << '\n';

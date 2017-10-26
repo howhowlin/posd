@@ -14,6 +14,7 @@ public:
   string get()    const;
   bool match(Term &term);
 
+
 public:
   List ();
   List (vector<Term *> const & elements);

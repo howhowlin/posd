@@ -22,5 +22,4 @@ protected:
   string _symbol;
 };
 
-
 #endif

@@ -27,7 +27,7 @@ List * List::tail() const{
   if(this->value()=="[]"){
     throw "Accessing head in an empty list";
   }
-   
+
   vector<Term *> args;
   args.assign(_elements.begin()+1,_elements.end());
    List* list = new List(args);

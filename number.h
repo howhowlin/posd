@@ -10,6 +10,5 @@ class Number : public Term{
 public:
   string get() const;
   Number(double db);
-  bool  match(Term &term);
 };
 #endif

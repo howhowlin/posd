@@ -7,7 +7,3 @@ string Number::get() const{
 Number::Number(double db):Term(db) {
 
 }
-
-bool Number::match(Term &term){
-   return false;
-}

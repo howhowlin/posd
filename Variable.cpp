@@ -25,9 +25,6 @@ bool Variable::match( Term & term ){
     return true;
   if(!_inst){
     _inst = &term ;
-    if(_inst->get()=="Atom"){
-      //std::cout << " "+_inst->symbol() << '\n';
-    }
     return true;
   }
   return _inst->match(term);

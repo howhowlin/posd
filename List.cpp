@@ -14,14 +14,25 @@ Term * List::elements(int index) { //??
 }
 
 Term * List::head() const{
-   return _elements[0];
+    if(this->value()=="[]"){
+      throw "Accessing head in an empty list";
+    }
+    return _elements[0];
+  // catch(const char* message){
+    //  std::cout << message << '\n';
+  //  }
 }
+
 List * List::tail() const{
-  //static  List list;
+  if(this->value()=="[]"){
+    throw "Accessing head in an empty list";
+  }
+   
   vector<Term *> args;
   args.assign(_elements.begin()+1,_elements.end());
    List* list = new List(args);
   return list;
+
 }
 
 
@@ -30,9 +41,9 @@ string List::symbol() const{
   if(_elements.size()>0){
      ret="[";
     for(int i=0;i<_elements.size()-1;i++){
-      ret += _elements[i]-> value()+",";
+      ret += _elements[i]-> value()+", ";
     }
-    ret += " "+_elements[_elements.size()-1]-> value()+"]";
+    ret +=_elements[_elements.size()-1]-> value()+"]";
      return ret;
    }
   else

@@ -6,9 +6,9 @@
 string Variable::value() const {
   if (_inst){
     string ret =_inst->symbol();
-    if(_inst->get()=="List"){
-    ret.insert(5," ");
-  }
+  //   if(_inst->get()=="List"){
+  //   ret.insert(5," ");
+  // }
     return ret;
   }
   else

@@ -20,15 +20,12 @@ public:
         return new Variable(symtable[_scanner.tokenValue()].first);
     else if(token == NUMBER)
         return new Number(_scanner.tokenValue());
-
-
     else if(token == ATOM){
         Atom* atom = new Atom(symtable[_scanner.tokenValue()].first);
         if(_scanner.currentChar() == '(' ) {
           _scanner.nextToken() ;
           vector<Term*> terms = getArgs();
           if(terms.size()==0){
-              std::cout << "/* message */" << '\n';
               return new Struct(*atom,terms);
             }
           if(_currentToken == ')')
@@ -37,39 +34,32 @@ public:
         else
           return atom;
        }
-
-
     else if(token == 91) {   //大括號
         vector<Term *> _elements = getArgs();
-
-
       if(_scanner.nChar(_scanner.bValue()) == ')'){  // 碰到）
           throw string("unexpected token");
         }
       else
-          _scanner.nspace();                        //一般處理
-         return new List(_elements);
-
-     if(_scanner.nextToken() == 93)
+        _scanner.nspace();                        //一般處理
+       return new List(_elements);
+      if(_scanner.nextToken() == 93)
            return new List();
     }
 
     else if(token == ATOMSC){       //ATOMSC
        if(_scanner.currentChar() == '('){
-          Atom* atom = new Atom(symtable[_scanner.tokenValue()].first);
-            _scanner.nextToken();
-            vector<Term *> terms = getArgs();
-              if(_currentToken == ')')
-                return new Struct(*atom,terms);
-          }
+         Atom* atom = new Atom(symtable[_scanner.tokenValue()].first);
+         _scanner.nextToken();
+         vector<Term *> terms = getArgs();
+       if(_currentToken == ')')
+          return new Struct(*atom,terms);
+        }
       }
-
 
     else {
          Term *term = new Term();
          return term;
        }
-
   }
 
   vector<Term*> getArgs()
@@ -85,8 +75,6 @@ public:
     }
     return args;
   }
-
-
 
 private:
   Scanner _scanner;

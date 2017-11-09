@@ -11,8 +11,9 @@ public:
   virtual string value() const {return symbol();}
   virtual bool match(Term & a);
   virtual string get() const{return "Term";}
-protected:
   Term ():_symbol(""){}
+protected:
+
   Term (string s):_symbol(s) {}
   Term(double db){
     std::ostringstream strs;

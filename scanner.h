@@ -14,18 +14,6 @@ public:
   Scanner (string in=""):buffer(in), pos(0), _tokenValue(NONE){}
   void setInput(string in) {buffer = in;}
 
-  char nChar(int pos){
-  return buffer[pos];
-  }
-
-  int bValue(){
-    pos--;
-    return pos;
-  }
-  void nspace(){
-    pos++;
-  }
-
   int nextToken() {
       if (skipLeadingWhiteSpace() >= buffer.length())
         return EOS;

@@ -278,8 +278,56 @@ TEST(iterator, BFS_List_2){
 
   ASSERT_TRUE(BFSIt->isDone());
 }
-
 TEST(iterator, DFS_Struct_1){
+  Atom bun("bun");
+  Atom beefPatty("beefPatty");
+  Atom shreddedLettuce("shreddedLettuce");
+  Atom pickleSlice1("pickleSlice1");
+  Atom pickleSlice2("pickleSlice2");
+  Atom onion1("onion1");
+  Atom onion2("onion2");
+  Atom coke("coke");
+  Atom fries1("fries1");
+  Atom fries2("fries2");
+  List l({&pickleSlice1, &pickleSlice2});
+  List u({&onion1, &onion2});
+  List v({&fries1, &fries2});
+  Struct bigMac(Atom("bigMac"),{&bun, &beefPatty, &shreddedLettuce, &l, &u});
+  Struct combo1(Atom("combo1"),{&v, &bigMac, &coke});
+  Iterator<Term*> *DFSIt = combo1.createDFSIterator();
+  DFSIt->first();
+  ASSERT_EQ("[fries1, fries2]", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("fries1", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("fries2", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("bigMac(bun, beefPatty, shreddedLettuce, [pickleSlice1, pickleSlice2], [onion1, onion2])", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("bun", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("beefPatty", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("shreddedLettuce", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("[pickleSlice1, pickleSlice2]", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("pickleSlice1", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("pickleSlice2", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("[onion1, onion2]", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("onion1", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("onion2", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_EQ("coke", DFSIt->currentItem()->symbol());
+  DFSIt->next();
+  ASSERT_TRUE(DFSIt->isDone());
+}
+
+TEST(iterator, DFS_Struct_2){
   Atom bun("bun");
   Atom beefPatty("beefPatty");
   Atom shreddedLettuce("shreddedLettuce");
@@ -327,56 +375,7 @@ TEST(iterator, DFS_Struct_1){
   DFSIt->next();
   ASSERT_TRUE(DFSIt->isDone());
 }
-TEST(iterator, DFS_Struct_2){
-  Atom bun("bun");
-  Atom beefPatty("beefPatty");
-  Atom shreddedLettuce("shreddedLettuce");
-  Atom pickleSlice1("pickleSlice1");
-  Atom pickleSlice2("pickleSlice2");
-  Atom onion1("onion1");
-  Atom onion2("onion2");
-  Atom coke("coke");
-  Atom fries1("fries1");
-  Atom fries2("fries2");
-  List l({&pickleSlice1, &pickleSlice2});
-  List u({&onion1, &onion2});
-  List v({&fries1, &fries2});
-  Struct bigMac(Atom("bigMac"),{&bun, &beefPatty, &shreddedLettuce, &l, &u});
-  Struct combo1(Atom("combo1"),{&v, &bigMac, &coke});
-  Iterator<Term*> *DFSIt = combo1.createDFSIterator();
-  DFSIt->first();
-  ASSERT_EQ("[fries1, fries2]", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("fries1", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("fries2", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("bigMac(bun, beefPatty, shreddedLettuce, [pickleSlice1, pickleSlice2], [onion1, onion2])", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("bun", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("beefPatty", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("shreddedLettuce", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("[pickleSlice1, pickleSlice2]", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("pickleSlice1", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("pickleSlice2", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("[onion1, onion2]", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("onion1", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("onion2", DFSIt->currentItem()->symbol());
-  DFSIt->next();
-  ASSERT_EQ("coke", DFSIt->currentItem()->symbol());
-  DFSIt->next();
 
-  ASSERT_TRUE(DFSIt->isDone());
-
-}
 TEST(iterator, DFS_List_1){
   Atom bun("bun");
   Atom beefPatty("beefPatty");

@@ -1,6 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
-
+#include <typeinfo>
+#include "atom.h"
 enum Operators {SEMICOLON, COMMA, EQUALITY, TERM};
 
 class Node {
@@ -40,6 +41,13 @@ public:
            this->left->right->term->match(*this->right->right->term);
            return true;
         }
+
+        else if(this->left->left->term->get()=="Variable" && this->left->right->term->get()=="Struct" &&this->right->left->term->get()=="Variable" && this->right->right->term->get()=="Number") {
+           this->right->left->term->match(*this->right->right->term);
+           this->left->left->term->match(*this->left->right->term);
+           return true;
+        }
+
         else{
           return false;
         }
@@ -59,7 +67,7 @@ public:
 
       return true;
    }
-   
+
     else{
       return false;
     }

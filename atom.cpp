@@ -1,6 +1,8 @@
 #include "atom.h"
 #include "variable.h"
+#include "iterator.h"
 #include <typeinfo>
+
 
 bool Term::match(Term & a){
   if (typeid(a) ==  typeid(Variable))
@@ -11,4 +13,8 @@ bool Term::match(Term & a){
 
 string Atom::get() const{
   return "Atom";
+}
+
+Iterator<Term*> * Term::createIterator(){
+  return new NullIterator(this);
 }

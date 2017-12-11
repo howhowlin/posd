@@ -20,6 +20,10 @@ public:
   Atom & name() {
     return _name;
   }
+
+  string  get() const{
+    return "Struct";
+  }
   string symbol() const {
     if(_args.empty())
     return  _name.symbol() + "()";
@@ -39,6 +43,10 @@ public:
     return ret;
   }
   int arity() const {return _args.size();}
+  Iterator<Term*> * createIterator();
+  Iterator<Term*> * createDFSIterator();
+  Iterator<Term*> * createBFSIterator();
+
 private:
   Atom _name;
   std::vector<Term *> _args;

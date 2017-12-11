@@ -1,31 +1,33 @@
 #ifndef LIST_H
 #define LIST_H
 
+#include "term.h"
 #include "atom.h"
 #include <vector>
-#include <string>
-#include <typeinfo>
-#include <iostream>
 using std::vector;
-
-class Variable ;
 
 class List : public Term {
 public:
-  string symbol() const ;
-  string value() const ;
-  bool match(Term & term) ;
+  string symbol() const;
+  string value() const;
+  bool match(Term & term);
+  string getName() const;
+  Atom * name() const;
+  Iterator<Term*> * createIterator();
+  Iterator<Term*> * createDFSIterator();
+  Iterator<Term*> * createBFSIterator();
 public:
-  List (): _elements(0) {}
-  List (vector<Term *> const & elements):_elements(elements){}
+  List (): _elements() {}
+  List (vector<Term *> const & elements);
+  Term * elements(int index) const;
   Term * head() const;
   List * tail() const;
-  Term * args(int index) {
-    return _elements[index];
-  }
+  void set(vector<Term *> const & elements);
   int arity() const {return _elements.size();}
 private:
   vector<Term *> _elements;
+
+
 };
 
 #endif

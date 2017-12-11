@@ -1,18 +1,16 @@
 #ifndef ITERATOR_H
 #define ITERATOR_H
 
+#include <stack>
+#include <queue>
+#include <vector>
 #include <iostream>
 #include "list.h"
 #include "struct.h"
 #include "node.h"
-#include <stack>
-#include <queue>
-#include <vector>
 #include "number.h"
 #include "variable.h"
 using namespace std;
-
-
 
 template <class T>
 class Iterator {
@@ -21,22 +19,19 @@ public:
   virtual void next() = 0;
   virtual Term* currentItem() const = 0;
   virtual bool isDone() const = 0;
-  //virtual void set(int, T);
 };
-
 
 class NullIterator :public Iterator <Term*> {
 public:
-  NullIterator(Term *n){}
   void first(){}
   void next(){}
+  NullIterator(Term *n){}
   Term * currentItem() const{
       return nullptr;
   }
   bool isDone() const{
     return true;
   }
-
 };
 
 
@@ -60,7 +55,6 @@ public:
     _index++;
   }
 private:
-  //StructIterator(Struct *s): _index(0), _s(s) {}
   int _index;
   Struct* _s;
 };
@@ -135,10 +129,6 @@ public:
         BFS(_l,_index);
        _index = 0;
      }
-    for(int i=0;i<v.size();i++){
-      std::cout << "v[" << i << "] :";
-     std::cout << v[i]->symbol() << '\n';
-   }
   }
 
   Term* currentItem() const {
@@ -168,14 +158,12 @@ class DFSIterator : public Iterator <Term*> {
 public:
   friend class Struct;
   friend class List;
-
   void DFS(Term* t,int index){
     Struct *s = dynamic_cast<Struct *>(t);
     List *l  = dynamic_cast<List *>(t);
     Atom *a = dynamic_cast<Atom *>(t);
     Number *n = dynamic_cast<Number *>(t);
     Variable *var = dynamic_cast<Variable *>(t);
-
     if(s){
       v.push_back(s);
       Iterator<Term *> *it = s->createIterator();
@@ -227,8 +215,6 @@ public:
         DFS(_l->elements(i),_index);
        _index = 0;
      }
-     for(int i=0;i<v.size();i++){
-    }
   }
 
   Term* currentItem() const {
@@ -242,6 +228,7 @@ public:
   void next() {
     _index++;
   }
+
 private:
   DFSIterator(Struct *s): _index(0), _s(s), e(0){}
   DFSIterator(List *l): _index(0), _l(l), e(1){}
@@ -250,7 +237,6 @@ private:
   Struct* _s;
   List* _l;
   vector<Term*> v;
-
 };
 
 #endif

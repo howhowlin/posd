@@ -1,33 +1,49 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "term.h"
-#include "atom.h"
+#include "struct.h"
 #include <vector>
+#include <typeinfo>
+#include <iostream>
 using std::vector;
+class Variable ;
 
-class List : public Term {
+class List : public Struct {
 public:
-  string symbol() const;
-  string value() const;
-  bool match(Term & term);
-  string getName() const;
-  Atom * name() const;
-  Iterator<Term*> * createIterator();
-  Iterator<Term*> * createDFSIterator();
-  Iterator<Term*> * createBFSIterator();
+  string symbol() const ;
+  string value() const ;
+
 public:
-  List (): _elements() {}
-  List (vector<Term *> const & elements);
-  Term * elements(int index) const;
+
+  List (vector<Term *> const & elements): Struct(Atom("."), {elements[0], createTail(elements)}){
+  }
+
+  List(Term * head, Term* tail):Struct(Atom("."), { head, tail }) {
+
+  }
+
   Term * head() const;
-  List * tail() const;
-  void set(vector<Term *> const & elements);
-  int arity() const {return _elements.size();}
+  Term * tail() const;
+
+  Term * args(int index) {
+    return _elements[index];
+  }
+
+  int arity() const {
+    return _elements.size();
+  }
+
+  Iterator * createIterator();
 private:
   vector<Term *> _elements;
-
-
+  
+  Term* createTail(std::vector<Term*> const &args){
+    Term* tail = new Atom("[]");
+    for (int i = args.size() - 1; i > 0; i--) {
+      tail = new List(args[i], tail);
+    }
+    return tail;
+  }
 };
 
 #endif

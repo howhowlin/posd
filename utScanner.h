@@ -3,7 +3,6 @@
 
 #include "scanner.h"
 
-
 class ScannerTest : public ::testing::Test {
 protected:
   void SetUp() {
@@ -18,7 +17,6 @@ TEST_F (ScannerTest, position) {
   EXPECT_EQ(0, scanner.position());
 
   EXPECT_EQ(1, scanner.skipLeadingWhiteSpace());
-  std::cout << scanner.currentChar() << '\n';
   EXPECT_TRUE(isdigit(scanner.currentChar()));
   EXPECT_EQ(12345, scanner.extractNumber());
   EXPECT_EQ(6, scanner.position());
@@ -75,7 +73,6 @@ TEST_F(ScannerTest, nextTokenAtom) {
   Scanner scanner("tom");
   EXPECT_EQ(0, scanner.position());
   int token = scanner.nextToken();
-  std::cout << token << std::endl;
   EXPECT_EQ(ATOM, token);
   EXPECT_EQ(0, scanner.tokenValue());
   EXPECT_EQ(3, scanner.position());

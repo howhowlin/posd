@@ -8,7 +8,7 @@ else
 	g++ -o hw8 mainScanner.o Atom.o Number.o  List.o Struct.o -lgtest -lpthread
 endif
 
-mainScanner.o: mainScanner.cpp utScanner.h utParser.h scanner.h parser.h utIterator.h iterator.h
+mainScanner.o: mainScanner.cpp utScanner.h  scanner.h parser.h  iterator.h
 				g++ -std=gnu++0x -c mainScanner.cpp
 
 Number.o: number.h Number.cpp

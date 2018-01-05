@@ -97,7 +97,7 @@ public:
       throw string("Missing token '.'");
   }
 
-  
+
   void restDisjunctionMatch() {
     if (_scanner.currentChar() == ';') {
       createTerm();

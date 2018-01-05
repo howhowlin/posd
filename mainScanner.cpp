@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "utScanner.h"
-
+#include "utParser.h"
 #include "utExp.h"
 #include "exception.h"
 #include "expression.h"
